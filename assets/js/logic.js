@@ -1,3 +1,9 @@
+//set global variables
+var timer = document.querySelector("#timer"); //grab timer span
+var submitBtn = document.querySelector("#submit"); //grab submit button
+timerValue = 75;
+timer.textContent = timerValue;
+
 // define object classes
 class query {
     constructor(tQuestion, tOptions){
@@ -33,7 +39,7 @@ var q2Opt2 = new option("test answer 6", false, false);
 var q2Opt3 = new option("test answer 7", false, false);
 var q2Opt4 = new option("test answer 8", false, false);
 
-//build query 1 options array
+//build query 2 options array
 q2Options = [q2Opt1, q2Opt2, q2Opt3, q2Opt4];
 
 var q2 = new query("test question 2", q2Options);
@@ -47,17 +53,6 @@ function generateQuery(){
     
 };
 let questionContent = document.querySelector("h2");
-// questionContent.textContent = q1.question
-// let optionContent1 = document.querySelector("label[for=option1]");
-// let optionContent2 = document.querySelector("label[for=option2]");
-// let optionContent3 = document.querySelector("label[for=option3]");
-// let optionContent4 = document.querySelector("label[for=option4]");
-
-// optionContent1.textContent = q1Opt1.answer;
-// optionContent2.textContent = q1Opt2.answer;
-// optionContent3.textContent = q1Opt3.answer;
-// optionContent4.textContent = q1Opt4.answer;
-
 //function to randomly populate content
 function populateContent(){
     randomQuery = generateQuery();
@@ -66,6 +61,27 @@ function populateContent(){
         window[`optionContent${(i+1)}`] = document.querySelector(`label[for=option${i+1}`); //generate a variable "optionContent#" and set it to be the label
         window[`optionContent${(i+1)}`].textContent = randomQuery.options[i].answer; //set the label content to be the necessary option
         window[`optionRadio${(i+1)}`] = document.querySelector(`#option${(i+1)}`); //generate a variable "optionRadio#" and set to to be the radio button itself
-        window[`optionRadio${(i+1)}`].setAttribute("value", randomQuery.options[i].isCorrect); //grab the value of isCorrect and set value of radio button to match
-    };
+        if(randomQuery.options[i].isCorrect){ //test the value of randomQuery.options[i].isCorrect
+            window[`optionRadio${(i + 1)}`].setAttribute("value", "correct")
+        } else {
+            window[`optionRadio${(i+1)}`].setAttribute("value", "incorrect");
+        };
 };
+};
+
+//function to decide what happens when submit is selected
+submitBtn.addEventListener("click", function(event){
+    event.preventDefault();
+    var radioBtns = document.querySelectorAll("input[type=radio]");
+    for(var i = 0; i < radioBtns.length; i++) {
+        if(radioBtns[i].checked && radioBtns[i].value === "correct"){
+            populateContent()
+        }; 
+        
+        if(radioBtns[i].checked && radioBtns[i].value === "incorrect"){
+            timerValue = timerValue-10;
+            timer.textContent = timerValue;
+            populateContent();
+        };
+    }
+})
