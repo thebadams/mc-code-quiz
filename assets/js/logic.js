@@ -42,18 +42,28 @@ var q2 = new query("test question 2", q2Options);
 function generateQuery(){
     let queryArray = [q1, q2];
     let randomNum = Math.floor(Math.random()*queryArray.length)
-    let randomQuery = queryArray[randomNum];
+    var randomQuery = queryArray[randomNum];
     return randomQuery;
     
 };
-questionContent = document.querySelector("h2");
-questionContent.textContent = q1.question
-optionContent1 = document.querySelector("label[for=option1]");
-optionContent2 = document.querySelector("label[for=option2]");
-optionContent3 = document.querySelector("label[for=option3]");
-optionContent4 = document.querySelector("label[for=option4]");
+let questionContent = document.querySelector("h2");
+// questionContent.textContent = q1.question
+// let optionContent1 = document.querySelector("label[for=option1]");
+// let optionContent2 = document.querySelector("label[for=option2]");
+// let optionContent3 = document.querySelector("label[for=option3]");
+// let optionContent4 = document.querySelector("label[for=option4]");
 
-optionContent1.textContent = q1Opt1.answer;
-optionContent2.textContent = q1Opt2.answer;
-optionContent3.textContent = q1Opt3.answer;
-optionContent4.textContent = q1Opt4.answer;
+// optionContent1.textContent = q1Opt1.answer;
+// optionContent2.textContent = q1Opt2.answer;
+// optionContent3.textContent = q1Opt3.answer;
+// optionContent4.textContent = q1Opt4.answer;
+
+//function to randomly populate content
+function populateContent(){
+    randomQuery = generateQuery();
+    questionContent.textContent = randomQuery.question
+    for(var i = 0; i < randomQuery.options.length; i++){
+        window[`optionContent${(i+1)}`] = document.querySelector(`label[for=option${i+1}`);
+        window[`optionContent${(i+1)}`].textContent = randomQuery.options[i].answer;
+    };
+};
