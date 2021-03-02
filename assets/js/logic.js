@@ -85,3 +85,20 @@ submitBtn.addEventListener("click", function(event){
         };
     }
 })
+
+
+//timer functions
+var countDownInterval
+function timerInterval(){
+    countDownInterval = setInterval(countDown, 1000)
+}
+function countDown() {
+    if (timerValue > 0) {
+        timerValue--
+        timer.textContent = timerValue;
+    } else {
+        clearInterval(countDownInterval); //clears the interval and stops the timer
+        alert("Game Over");
+
+    }
+};
