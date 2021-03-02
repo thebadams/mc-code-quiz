@@ -1,8 +1,8 @@
 //set global variables
 var timer = document.querySelector("#timer"); //grab timer span
 var submitBtn = document.querySelector("#submit"); //grab submit button
-timerValue = 75;
-timer.textContent = timerValue;
+timerValue = 75; //set initial timer value
+timer.textContent = timerValue; //display timer value
 
 // define object classes
 class query {
@@ -16,17 +16,16 @@ class option {
     constructor(tAnswer, tIsCorrect, tIsSelected){
         this.answer = tAnswer;
         this.isCorrect = tIsCorrect;
-        this.isSelected = tIsSelected
     }
 }
 
 //build queries and options
 
 //build options, query 1
-var q1Opt1 = new option("test answer", true, false);
-var q1Opt2 = new option("test answer 2", false, false);
-var q1Opt3 = new option("test answer 3", false, false);
-var q1Opt4 = new option("test answer 4", false, false);
+var q1Opt1 = new option("test answer", true);
+var q1Opt2 = new option("test answer 2", false);
+var q1Opt3 = new option("test answer 3", false);
+var q1Opt4 = new option("test answer 4", false);
 
 //build query 1 options array
 q1Options = [q1Opt1, q1Opt2, q1Opt3, q1Opt4];
@@ -69,7 +68,7 @@ function populateContent(){
 };
 };
 
-//function to decide what happens when submit is selected
+//function to decide what happens when submit is clicked
 submitBtn.addEventListener("click", function(event){
     event.preventDefault();
     var radioBtns = document.querySelectorAll("input[type=radio]");
