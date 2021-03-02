@@ -61,11 +61,11 @@ let questionContent = document.querySelector("h2");
 //function to randomly populate content
 function populateContent(){
     randomQuery = generateQuery();
-    questionContent.textContent = randomQuery.question
-    for(var i = 0; i < randomQuery.options.length; i++){
-        window[`optionContent${(i+1)}`] = document.querySelector(`label[for=option${i+1}`);
-        window[`optionContent${(i+1)}`].textContent = randomQuery.options[i].answer;
-        window[`optionRadio${(i+1)}`] = document.querySelector(`#option${(i+1)}`);
-        window[`optionRadio${(i+1)}`].setAttribute("value", randomQuery.options[i].isCorrect);
+    questionContent.textContent = randomQuery.question // assigns question of RandomQuery to questionContent.textContent
+    for(var i = 0; i < randomQuery.options.length; i++){ //for each option in the chosen Query
+        window[`optionContent${(i+1)}`] = document.querySelector(`label[for=option${i+1}`); //generate a variable "optionContent#" and set it to be the label
+        window[`optionContent${(i+1)}`].textContent = randomQuery.options[i].answer; //set the label content to be the necessary option
+        window[`optionRadio${(i+1)}`] = document.querySelector(`#option${(i+1)}`); //generate a variable "optionRadio#" and set to to be the radio button itself
+        window[`optionRadio${(i+1)}`].setAttribute("value", randomQuery.options[i].isCorrect); //grab the value of isCorrect and set value of radio button to match
     };
 };
