@@ -65,5 +65,7 @@ function populateContent(){
     for(var i = 0; i < randomQuery.options.length; i++){
         window[`optionContent${(i+1)}`] = document.querySelector(`label[for=option${i+1}`);
         window[`optionContent${(i+1)}`].textContent = randomQuery.options[i].answer;
+        window[`optionRadio${(i+1)}`] = document.querySelector(`#option${(i+1)}`);
+        window[`optionRadio${(i+1)}`].setAttribute("value", randomQuery.options[i].isCorrect);
     };
 };
