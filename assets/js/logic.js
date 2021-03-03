@@ -7,7 +7,7 @@ timer.textContent = timerValue; //display timer value
 // define object classes
 class query {
     constructor(tQuestion, tOptions){
-        this.question = tQuestion;
+    this.question = tQuestion;
         this.options = tOptions;
     }
 }
@@ -56,7 +56,7 @@ let questionContent = document.querySelector("h2");
 
 
 //function to randomly populate content
-
+//TODO: Randomize Options
 function populateContent(){
     randomQuery = generateQuery();
     questionContent.textContent = randomQuery.question // assigns question of RandomQuery to questionContent.textContent
@@ -105,3 +105,6 @@ function countDown() {
 
     }
 };
+
+//TODO: Add start button functionality
+//TODO: Add High Score FunctionAlity
