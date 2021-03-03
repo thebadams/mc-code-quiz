@@ -44,15 +44,19 @@ q2Options = [q2Opt1, q2Opt2, q2Opt3, q2Opt4];
 var q2 = new query("test question 2", q2Options);
 
 //function to generate random question
+let queryArray = [q1, q2]//define query Array
 function generateQuery(){
-    let queryArray = [q1, q2];
     let randomNum = Math.floor(Math.random()*queryArray.length)
     var randomQuery = queryArray[randomNum];
+    queryArray.splice(randomNum);
     return randomQuery;
     
 };
 let questionContent = document.querySelector("h2");
+
+
 //function to randomly populate content
+
 function populateContent(){
     randomQuery = generateQuery();
     questionContent.textContent = randomQuery.question // assigns question of RandomQuery to questionContent.textContent
@@ -88,7 +92,7 @@ submitBtn.addEventListener("click", function(event){
 
 //timer functions
 var countDownInterval
-function timerInterval(){
+function timer(){
     countDownInterval = setInterval(countDown, 1000)
 }
 function countDown() {
