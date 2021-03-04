@@ -48,7 +48,7 @@ startBtn.addEventListener("click", function(){
     //generate quiz
         //generate queries
         //generate options
-    //populate quiz
+    //TODO: populate quiz
     //hide start-page
     //start timer
 })
