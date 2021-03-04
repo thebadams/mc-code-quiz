@@ -1,8 +1,10 @@
-//set global variables
-var timer = document.querySelector("#timer"); //grab timer span
-var submitBtn = document.querySelector("#submit"); //grab submit button
-timerValue = 75; //set initial timer value
-timer.textContent = timerValue; //display timer value
+//grab html elements
+var startPage = document.querySelector("#start-page");//grab start page div
+var startBtn = document.querySelector("#start-btn"); //grab start button
+var timerDisplay = document.querySelector("#timer-display"); //grab timer display
+var quizContent = document.querySelector("#quiz-content"); //grab quiz content div
+var highScoresContent = document.querySelector("#high-scores");
+
 
 // define object classes
 class query {
@@ -13,7 +15,7 @@ class query {
 }
 
 class option {
-    constructor(tAnswer, tIsCorrect, tIsSelected){
+    constructor(tAnswer, tIsCorrect){
         this.answer = tAnswer;
         this.isCorrect = tIsCorrect;
     }
