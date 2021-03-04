@@ -6,6 +6,10 @@ var quizContent = document.querySelector("#quiz-content"); //grab quiz content d
 var highScoresContent = document.querySelector("#high-scores");
 
 
+//declare variables
+var score = 0;
+var quizNum = 1;
+
 // define object classes
 class query {
     constructor(tQuestion, tOptions){
@@ -37,6 +41,16 @@ class score {
     }
 }
 
+
+//TODO: build a function to occur onClick of startBtn
+startBtn.addEventListener("click", function(){
+    //generate quiz
+        //generate queries
+        //generate options
+    //populate quiz
+    //hide start-page
+    //start timer
+})
 //build queries and options
 
 //build options, query 1
