@@ -116,14 +116,30 @@ var query5Options = [query5Opt1, query5Opt2, query5Opt3, query5Opt4]
 var query5 = new query("test question 5", query5Options);
 //function to generate random question
 let queryArray = [query1, query2, query3, query4, query5]//define query Array
+
+//function to generate a random query & remove it from the array
 function generateQuery(){
     let randomNum = Math.floor(Math.random()*queryArray.length)
     var randomQuery = queryArray[randomNum];
-    queryArray.splice(randomNum);
+    queryArray.splice(randomNum, 1)[0];
     return randomQuery;
     
 };
-let questionContent = document.querySelector("h2");
+
+//function to build quiz
+
+
+function constructQuiz(){
+    var tParticipant = participantInput.value;
+    var tQueries = []; //declare tQueries as an empy array
+    for(var i = queryArray.length; i > 0; i--){
+        var randomQuery = generateQuery();
+        tQueries.push(randomQuery);
+        console.log(tQueries);
+    }
+    window[`quiz${quizNum}`]= new quiz(tQueries,tParticipant);
+
+}
 
 
 //function to randomly populate content
