@@ -4,6 +4,7 @@ var startBtn = document.querySelector("#start-btn"); //grab start button
 var timerDisplay = document.querySelector("#timer-display"); //grab timer display
 var quizContent = document.querySelector("#quiz-content"); //grab quiz content div
 var highScoresContent = document.querySelector("#high-scores");
+var participantInput = document.querySelector("#participant")
 
 
 //declare variables
@@ -33,7 +34,7 @@ class quiz {
     };
 };
 
-class score {
+class scoring {
     constructor(tNumCorrect, tTimeLeft, tScoreValue) {
         this.numCorrect = tNumCorrect;
         this.timeLeft = tTimeLeft;
@@ -54,29 +55,67 @@ startBtn.addEventListener("click", function(){
 //build queries and options
 
 //build options, query 1
-var q1Opt1 = new option("test answer", true);
-var q1Opt2 = new option("test answer 2", false);
-var q1Opt3 = new option("test answer 3", false);
-var q1Opt4 = new option("test answer 4", false);
+var query1Opt1 = new option("test answer", true);
+var query1Opt2 = new option("test answer 2", false);
+var query1Opt3 = new option("test answer 3", false);
+var query1Opt4 = new option("test answer 4", false);
 
 //build query 1 options array
-q1Options = [q1Opt1, q1Opt2, q1Opt3, q1Opt4];
+q1Options = [query1Opt1, query1Opt2, query1Opt3, query1Opt4];
 
-var q1 = new query("test question 1", q1Options);
+var query1 = new query("test question 1", q1Options);
 
-//build options, query 1
-var q2Opt1 = new option("test answer 5", true, false);
-var q2Opt2 = new option("test answer 6", false, false);
-var q2Opt3 = new option("test answer 7", false, false);
-var q2Opt4 = new option("test answer 8", false, false);
+//build options, query 2
+var query2Opt1 = new option("test answer 5", true);
+var query2Opt2 = new option("test answer 6", false);
+var query2Opt3 = new option("test answer 7", false);
+var query2Opt4 = new option("test answer 8", false);
 
-//build query 2 options array
-var q2Options = [q2Opt1, q2Opt2, q2Opt3, q2Opt4];
+//build query 2 oueryptions array
+var query2Options = [query2Opt1, query2Opt2, query2Opt3, query2Opt4];
 
-var q2 = new query("test question 2", q2Options);
+var query2 = new query("test question 2", query2Options);
 
+//build query 3
+// query3 options
+var query3Opt1 = new option("test answer 9", true);
+var query3Opt2 = new option("test answer 10", false);
+var query3Opt3 = new option("test answer 11", true);
+var query3Opt4 = new option("test answer 12", true);
+
+//query3 options array
+var query3Options = [query3Opt1, query3Opt2, query3Opt3, query3Opt4]
+
+//build query 3
+var query3 = new query("test question 3", query3Options);
+
+//build query 4
+// query4 options
+var query4Opt1 = new option("test answer 13", true);
+var query4Opt2 = new option("test answer 14", false);
+var query4Opt3 = new option("test answer 15", true);
+var query4Opt4 = new option("test answer 16", true);
+
+//query4 options array
+var query4Options = [query4Opt1, query4Opt2, query4Opt3, query4Opt4]
+
+//build query 4
+var query4 = new query("test question 4", query4Options);
+
+//build query 5
+// query5 options
+var query5Opt1 = new option("test answer 17", true);
+var query5Opt2 = new option("test answer 18", false);
+var query5Opt3 = new option("test answer 19", true);
+var query5Opt4 = new option("test answer 20", true);
+
+//query5 options array
+var query5Options = [query5Opt1, query5Opt2, query5Opt3, query5Opt4]
+
+//build query 3
+var query5 = new query("test question 5", query5Options);
 //function to generate random question
-let queryArray = [q1, q2]//define query Array
+let queryArray = [query1, query2, query3, query4, query5]//define query Array
 function generateQuery(){
     let randomNum = Math.floor(Math.random()*queryArray.length)
     var randomQuery = queryArray[randomNum];
