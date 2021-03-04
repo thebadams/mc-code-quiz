@@ -21,6 +21,22 @@ class option {
     }
 }
 
+class quiz {
+    constructor(tQueries, tParticipant, tScore){
+        this.queries = tQueries;
+        this.participant = tParticipant;
+        this.score = tScore;
+    };
+};
+
+class score {
+    constructor(tNumCorrect, tTimeLeft, tScoreValue) {
+        this.numCorrect = tNumCorrect;
+        this.timeLeft = tTimeLeft;
+        this.scoreValue = tScoreValue
+    }
+}
+
 //build queries and options
 
 //build options, query 1
