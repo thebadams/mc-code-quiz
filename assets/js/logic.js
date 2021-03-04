@@ -143,38 +143,58 @@ function constructQuiz(){
 
 
 //function to randomly populate content
+//TODO: Populate Quiz Area
+//TODO: Create Elements
 //TODO: Randomize Options
-function populateContent(){
-    randomQuery = generateQuery();
-    questionContent.textContent = randomQuery.question // assigns question of RandomQuery to questionContent.textContent
-    for(var i = 0; i < randomQuery.options.length; i++){ //for each option in the chosen Query
-        window[`optionContent${(i+1)}`] = document.querySelector(`label[for=option${i+1}`); //generate a variable "optionContent#" and set it to be the label
-        window[`optionContent${(i+1)}`].textContent = randomQuery.options[i].answer; //set the label content to be the necessary option
-        window[`optionRadio${(i+1)}`] = document.querySelector(`#option${(i+1)}`); //generate a variable "optionRadio#" and set to to be the radio button itself
-        if(randomQuery.options[i].isCorrect){ //test the value of randomQuery.options[i].isCorrect
-            window[`optionRadio${(i + 1)}`].setAttribute("value", "correct")
-        } else {
-            window[`optionRadio${(i+1)}`].setAttribute("value", "incorrect");
-        };
-};
-};
+
+// Function to populate quiz
+function populateQuiz() {
+    //create  and define elements
+    
+    for(var i = 1; i <= window[`quiz${quizNum}`].queries.length; i++){
+        window[`labelOption${i}`] = document.createElement("label") // create label
+        window[`radioOption${i}`] = document.createElement("input") // create input
+        window[`labelOption${i}`].setAttribute("for", `option${i}`); // set for attribute of label
+        window[`radioOption${i}`].setAttribute("type", "radio"); // sett ypefor radio button
+        window[`radioOption${i}`].setAttribute("id", `option${i}`);
+        quizContent.appendChild(window[`labelOption${i}`]);
+        quizContent.appendChild(window[`radioOption${i}`]);
+        // var queryIndex = 0;
+        window[`labelOption${i}`].textContent = window[`quiz${quizNum}`].queries[i-1].question
+    }
+}
+//
+// function populateContent(){
+//     randomQuery = generateQuery();
+//     questionContent.textContent = randomQuery.question // assigns question of RandomQuery to questionContent.textContent
+//     for(var i = 0; i < randomQuery.options.length; i++){ //for each option in the chosen Query
+//         window[`optionContent${(i+1)}`] = document.querySelector(`label[for=option${i+1}`); //generate a variable "optionContent#" and set it to be the label
+//         window[`optionContent${(i+1)}`].textContent = randomQuery.options[i].answer; //set the label content to be the necessary option
+//         window[`optionRadio${(i+1)}`] = document.querySelector(`#option${(i+1)}`); //generate a variable "optionRadio#" and set to to be the radio button itself
+//         if(randomQuery.options[i].isCorrect){ //test the value of randomQuery.options[i].isCorrect
+//             window[`optionRadio${(i + 1)}`].setAttribute("value", "correct")
+//         } else {
+//             window[`optionRadio${(i+1)}`].setAttribute("value", "incorrect");
+//         };
+// };
+// };
 
 //function to decide what happens when submit is clicked
-submitBtn.addEventListener("click", function(event){
-    event.preventDefault();
-    var radioBtns = document.querySelectorAll("input[type=radio]");
-    for(var i = 0; i < radioBtns.length; i++) {
-        if(radioBtns[i].checked && radioBtns[i].value === "correct"){
-            populateContent()
-        }; 
+// submitBtn.addEventListener("click", function(event){
+//     event.preventDefault();
+//     var radioBtns = document.querySelectorAll("input[type=radio]");
+//     for(var i = 0; i < radioBtns.length; i++) {
+//         if(radioBtns[i].checked && radioBtns[i].value === "correct"){
+//             populateContent()
+//         }; 
         
-        if(radioBtns[i].checked && radioBtns[i].value === "incorrect"){
-            timerValue = timerValue-10;
-            timer.textContent = timerValue;
-            populateContent();
-        };
-    }
-})
+//         if(radioBtns[i].checked && radioBtns[i].value === "incorrect"){
+//             timerValue = timerValue-10;
+//             timer.textContent = timerValue;
+//             populateContent();
+//         };
+//     }
+// })
 
 
 //timer functions
