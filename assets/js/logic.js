@@ -71,7 +71,7 @@ var q2Opt3 = new option("test answer 7", false, false);
 var q2Opt4 = new option("test answer 8", false, false);
 
 //build query 2 options array
-q2Options = [q2Opt1, q2Opt2, q2Opt3, q2Opt4];
+var q2Options = [q2Opt1, q2Opt2, q2Opt3, q2Opt4];
 
 var q2 = new query("test question 2", q2Options);
 
