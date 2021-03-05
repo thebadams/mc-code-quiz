@@ -4,7 +4,13 @@ var startBtn = document.querySelector("#start-btn"); //grab start button
 var timerDisplay = document.querySelector("#timer-display"); //grab timer display
 var quizContent = document.querySelector("#quiz-content"); //grab quiz content div
 var highScoresContent = document.querySelector("#high-scores");
-var participantInput = document.querySelector("#participant")
+var participantInput = document.querySelector("#participant"); //grab participant input
+//grab quiz elements
+var radioOption1 = document.querySelector("#option1");
+var radioOption2 = document.querySelector("#option2");
+var radioOption3 = document.querySelector("#option3");
+var radioOption4 = document.querySelector("#option4")
+var labelOption1 = document.querySelector("label[for='option1']");
 
 
 //declare variables
@@ -143,46 +149,15 @@ function constructQuiz(){
 
 
 //function to randomly populate content
-//TODO: Populate Quiz Area
+//TODO: Simplify Populate Quiz Area
 //TODO: Randomize Options
 
 
 var queryNum = 0
 // Function to populate quiz
 function populateQuiz() {
-    //grab potential elements in quiz
-    var radioBtns = document.querySelectorAll("#quiz-content input");
-    var labels = document.querySelectorAll("#quiz-content label");
-    var questionText = document.querySelectorAll("#quiz-content h3");
-    var quizBtn = document.querySelectorAll("#quiz-content button")
-    //if the elements exist; remove them
-    if(typeof(radioBtn) !== undefined){ 
-        radioBtns.forEach((el)=>el.remove());
-        labels.forEach((el)=>el.remove());
-        questionText.forEach((el)=> el.remove())
-        quizBtn.forEach((el) => el.remove())
-    }
-    //create  and define elements
-    var question = document.createElement("h3");
-    quizContent.appendChild(question);
-    console.log(question)
-    question.textContent = window[`quiz${quizNum}`].queries[queryNum].question
-    console.log(window[`quiz${quizNum}`].queries[queryNum].question)
     
-    for(var i = 1; i <= window[`quiz${quizNum}`].queries[queryNum].options.length; i++){
-        window[`labelOption${i}`] = document.createElement("label") // create label
-        window[`radioOption${i}`] = document.createElement("input") // create input
-        window[`labelOption${i}`].setAttribute("for", `option${i}`); // set for attribute of label
-        window[`radioOption${i}`].setAttribute("type", "radio"); // sett ypefor radio button
-        window[`radioOption${i}`].setAttribute("id", `option${i}`);
-        window[`radioOption${i}`].setAttribute("name", "option");
-        quizContent.appendChild(window[`labelOption${i}`]);
-        quizContent.appendChild(window[`radioOption${i}`]);
-        window[`labelOption${i}`].textContent = window[`quiz${quizNum}`].queries[queryNum].options[i-1].answer;
-    }
-    var submitBtn = document.createElement("button");
-    quizContent.appendChild(submitBtn);
-    submitBtn.textContent = "Submit";
+    
     queryNum++
 
 }
