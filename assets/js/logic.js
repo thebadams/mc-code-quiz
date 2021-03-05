@@ -150,14 +150,24 @@ function constructQuiz(){
 var queryNum = 0
 // Function to populate quiz
 function populateQuiz() {
-    //TODO: reset elements
+    //grab potential elements in quiz
     var radioBtns = document.querySelectorAll("#quiz-content input");
-    var labels = document.querySelectorAll("#quiz-content label")
+    var labels = document.querySelectorAll("#quiz-content label");
+    var questionText = document.querySelectorAll("#quiz-content h3");
+    var quizBtn = document.querySelectorAll("#quiz-content button")
+    //if the elements exist; remove them
     if(typeof(radioBtn) !== undefined){ 
-            radioBtns.forEach((el)=>el.remove());
-            labels.forEach((el)=>el.remove());
+        radioBtns.forEach((el)=>el.remove());
+        labels.forEach((el)=>el.remove());
+        questionText.forEach((el)=> el.remove())
+        quizBtn.forEach((el) => el.remove())
     }
     //create  and define elements
+    var question = document.createElement("h3");
+    quizContent.appendChild(question);
+    console.log(question)
+    question.textContent = window[`quiz${quizNum}`].queries[queryNum].question
+    console.log(window[`quiz${quizNum}`].queries[queryNum].question)
     
     for(var i = 1; i <= window[`quiz${quizNum}`].queries[queryNum].options.length; i++){
         window[`labelOption${i}`] = document.createElement("label") // create label
@@ -170,23 +180,12 @@ function populateQuiz() {
         quizContent.appendChild(window[`radioOption${i}`]);
         window[`labelOption${i}`].textContent = window[`quiz${quizNum}`].queries[queryNum].options[i-1].answer;
     }
+    var submitBtn = document.createElement("button");
+    quizContent.appendChild(submitBtn);
+    submitBtn.textContent = "Submit";
     queryNum++
 }
-//
-// function populateContent(){
-//     randomQuery = generateQuery();
-//     questionContent.textContent = randomQuery.question // assigns question of RandomQuery to questionContent.textContent
-//     for(var i = 0; i < randomQuery.options.length; i++){ //for each option in the chosen Query
-//         window[`optionContent${(i+1)}`] = document.querySelector(`label[for=option${i+1}`); //generate a variable "optionContent#" and set it to be the label
-//         window[`optionContent${(i+1)}`].textContent = randomQuery.options[i].answer; //set the label content to be the necessary option
-//         window[`optionRadio${(i+1)}`] = document.querySelector(`#option${(i+1)}`); //generate a variable "optionRadio#" and set to to be the radio button itself
-//         if(randomQuery.options[i].isCorrect){ //test the value of randomQuery.options[i].isCorrect
-//             window[`optionRadio${(i + 1)}`].setAttribute("value", "correct")
-//         } else {
-//             window[`optionRadio${(i+1)}`].setAttribute("value", "incorrect");
-//         };
-// };
-// };
+
 
 //function to decide what happens when submit is clicked
 // submitBtn.addEventListener("click", function(event){
