@@ -144,24 +144,33 @@ function constructQuiz(){
 
 //function to randomly populate content
 //TODO: Populate Quiz Area
-//TODO: Create Elements
 //TODO: Randomize Options
 
+
+var queryNum = 0
 // Function to populate quiz
 function populateQuiz() {
+    //TODO: reset elements
+    var radioBtns = document.querySelectorAll("#quiz-content input");
+    var labels = document.querySelectorAll("#quiz-content label")
+    if(typeof(radioBtn) !== undefined){ 
+            radioBtns.forEach((el)=>el.remove());
+            labels.forEach((el)=>el.remove());
+    }
     //create  and define elements
     
-    for(var i = 1; i <= window[`quiz${quizNum}`].queries.length; i++){
+    for(var i = 1; i <= window[`quiz${quizNum}`].queries[queryNum].options.length; i++){
         window[`labelOption${i}`] = document.createElement("label") // create label
         window[`radioOption${i}`] = document.createElement("input") // create input
         window[`labelOption${i}`].setAttribute("for", `option${i}`); // set for attribute of label
         window[`radioOption${i}`].setAttribute("type", "radio"); // sett ypefor radio button
         window[`radioOption${i}`].setAttribute("id", `option${i}`);
+        window[`radioOption${i}`].setAttribute("name", "option");
         quizContent.appendChild(window[`labelOption${i}`]);
         quizContent.appendChild(window[`radioOption${i}`]);
-        // var queryIndex = 0;
-        window[`labelOption${i}`].textContent = window[`quiz${quizNum}`].queries[i-1].question
+        window[`labelOption${i}`].textContent = window[`quiz${quizNum}`].queries[queryNum].options[i-1].answer;
     }
+    queryNum++
 }
 //
 // function populateContent(){
