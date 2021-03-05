@@ -6,13 +6,15 @@ var quizContent = document.querySelector("#quiz-content"); //grab quiz content d
 var highScoresContent = document.querySelector("#high-scores");
 var participantInput = document.querySelector("#participant"); //grab participant input
 //grab quiz elements
+var questionContent = document.querySelector("#question-content")
 var radioOption1 = document.querySelector("#option1");
 var radioOption2 = document.querySelector("#option2");
 var radioOption3 = document.querySelector("#option3");
 var radioOption4 = document.querySelector("#option4")
 var labelOption1 = document.querySelector("label[for='option1']");
-
-
+var labelOption2 = document.querySelector("label[for='option2']");
+var labelOption3 = document.querySelector("label[for='option3']");
+var labelOption4 = document.querySelector("label[for='option4']");
 //declare variables
 var score = 0;
 var quizNum = 1;
@@ -153,14 +155,17 @@ function constructQuiz(){
 //TODO: Randomize Options
 
 
+
+
 var queryNum = 0
 // Function to populate quiz
 function populateQuiz() {
-    
-    
-    queryNum++
-
-}
+   questionContent.textContent = window[`quiz${quizNum}`].queries[queryNum].question
+   for(var i = 0; i < window[`quiz${quizNum}`].queries[queryNum].options.length; i++) {
+        eval(`labelOption${i+1}`).textContent = window[`quiz${quizNum}`].queries[queryNum].options[i].answer;
+   }
+   queryNum++
+};
 
 
 //function to decide what happens when submit is clicked
