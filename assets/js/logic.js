@@ -184,25 +184,38 @@ function populateQuiz() {
     quizContent.appendChild(submitBtn);
     submitBtn.textContent = "Submit";
     queryNum++
+
 }
 
 
 //function to decide what happens when submit is clicked
-// submitBtn.addEventListener("click", function(event){
-//     event.preventDefault();
-//     var radioBtns = document.querySelectorAll("input[type=radio]");
-//     for(var i = 0; i < radioBtns.length; i++) {
-//         if(radioBtns[i].checked && radioBtns[i].value === "correct"){
-//             populateContent()
-//         }; 
-        
-//         if(radioBtns[i].checked && radioBtns[i].value === "incorrect"){
-//             timerValue = timerValue-10;
-//             timer.textContent = timerValue;
-//             populateContent();
-//         };
-//     }
-// })
+quizContent.addEventListener("click", function(event){
+    var element = event.target
+    if(element.matches("button")){
+        console.log("Button Pressed!");
+        var radioBtns = document.querySelectorAll("input[type=radio]");
+        for(var i = 0; i < radioBtns.length; i++) {
+            if(radioBtns[i].checked && radioBtns[i].value === "correct"){
+                if(window[`quiz${quizNum}`].queries[queryNum].options.length !== 0){
+                    populateQuiz()
+                } else {
+                    break
+                }//write else statement
+            }
+            
+            if(radioBtns[i].checked && radioBtns[i].value === "incorrect"){
+                timerValue = timerValue-10;
+                timer.textContent = timerValue;
+                if (window[`quiz${quizNum}`].queries[queryNum].options.length !== 0) {
+                    populateQuiz()
+                } else {
+                    break
+                } //write else statement
+
+            };
+        }
+    }
+})
 
 
 //timer functions
