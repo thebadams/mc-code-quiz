@@ -202,7 +202,7 @@ quizContent.addEventListener("click", function(event){
 var countDownInterval
 function timer(){
     countDownInterval = setInterval(countDown, 1000)
-}
+}ui
 function countDown() {
     if (timerValue > 0) {
         timerValue--
