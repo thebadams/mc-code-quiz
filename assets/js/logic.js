@@ -22,7 +22,6 @@ var correctQuestions = 0;
 var quizNum = 1;
 var timerValue = 90;
 var isGameActive = false
-
 //High Score
 // var storedHighScores = JSON.parse(localStorage.getItem("highScores"))
 /*var names = [];
@@ -243,8 +242,6 @@ function scoreLog(){
     window[`quiz${quizNum}`].score = score;
 }
 
-var highScoreArray = []
-
 function displayScore() {
     currentScore = window[`quiz${quizNum}`].score.scoreValue;
     highScoreArray.push(currentScore);
@@ -253,6 +250,14 @@ function displayScore() {
     }
 }
 
+
+function reset(){
+    quizNum++;
+    queryArray = [query1, query2, query3, query4, query5];
+    queryNum = 0;
+    correctQuestions = 0;
+    timerValue = 90;
+}
 
 // function saveScore(){
 //     var highScoreArray = JSON.parse(localStorage.getItem("highScores"))
