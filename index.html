@@ -16,14 +16,23 @@
     <div class="cover-container d-flex flex-column justify-content-center align-items-center">
         <div id="start-page" class="jumbotron jumbotron-fluid d-flex flex-column justify-content-center">
             <h1 class="display-3 my-3">JavaScript Knowledge Quiz</h1>
-            <p>Please Enter You Name and Click Start to Start The Quiz</p>
-            <input type="text" name="participant" id="participant" class="my-3">
+            <p>Please Click Start to Start The Quiz</p>
+
             <button id="start-btn" class="my-3">Start</button>
         </div>
         <div id="timer" class ="hidden">
-        <h2>Timer</h2>
+        <h2>Score Board</h2>
             <h3>Time Left</h3>
             <p><span id ="timer-display">90</span> Seconds</p>
+            <div id="scoring-display" class = "hidden">
+                <h3>Number Correct</h3>
+                <p id = "correct-display"></p>
+                <h3>Total Score</h3>
+                <p id="total-score"></p>
+                <input type="text" name="participant" id="participant" class="my-3">
+                <button id= "score-log-btn">Log Score</button>
+            </div>
+
         </div>
         <div id="quiz-content" class="hidden">
             <div class="card">
@@ -40,6 +49,7 @@
                 <button id="submit">submit</button>
             </div>
         </div>
+
         <div id="high-scores" class="hidden">
             <h2>High Scores</h2>
             <ol>

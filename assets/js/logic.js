@@ -19,6 +19,10 @@ var labelOption3 = document.querySelector("label[for='option3']");
 var labelOption4 = document.querySelector("label[for='option4']");
 var submitBtn = document.querySelector("#submit");
 var highScoreList = document.querySelectorAll("ol li");
+var correctDisplay = document.querySelector("#correct-display");
+var scoringDisplay =document.querySelector("#scoring-display");
+var scoreLogBtn = document.querySelector("#score-log-btn");
+var totalScore = document.querySelector("#total-score");
 //declare variables
 var correctQuestions = 0;
 var quizNum = 0;
@@ -153,14 +157,13 @@ function generateQuery(){
 
 
 function constructQuiz(){
-    var tParticipant = participantInput.value;
+    
     var tQueries = []; //declare tQueries as an empy array
     for(var i = queryArray.length; i > 0; i--){
         var randomQuery = generateQuery();
         tQueries.push(randomQuery);
-        console.log(tQueries);
     }
-    window[`quiz${quizNum}`]= new quiz(tQueries,tParticipant);
+    window[`quiz${quizNum}`]= new quiz(tQueries);
 
 }
 
@@ -212,13 +215,21 @@ function checkGameStatus() {
     if((window[`quiz${quizNum}`].queries[queryNum] === undefined)|| (timerValue === 0)) {
         isGameActive = !isGameActive;
         clearInterval(countDownInterval);
-        highScoresContent.classList.toggle("hidden");
+        totalScore.textContent = (timerValue*correctQuestions)
+        correctQuestions.textContent = correctQuestions
         quizContent.classList.toggle("hidden");
-        scoreLog();
-        displayHighScore();
-        saveHighScore();
+        scoringDisplay.classList.toggle("hidden")
+
+        
     }
 }
+
+scoreLogBtn.addEventListener("click", function(){
+    scoreLog()
+    timerContent.classList.toggle("hidden");
+    highScoresContent.classList.toggle("hidden");
+    displayHighScore();
+});
 
 
 //function to decide what happens when submit is clicked
@@ -239,9 +250,9 @@ function countDown() {
     } else {
         clearInterval(countDownInterval); //clears the interval and stops the timer
         quizContent.classList.toggle("hidden");
-        highScoresContent.classList.toggle("hidden");
-        timerContent.classList.toggle("hidden");
-        displayHighScore();
+        scoringDisplay.classList.toggle("hidden");
+        correctDisplay.textContent = correctQuestions;
+        totalScore.textContent = (correctQuestions*timerValue);
 
         
 
@@ -251,8 +262,10 @@ function countDown() {
 //TODO: Add start button functionality
 //TODO: Add High Score FunctionAlity
 function scoreLog(){
+    var tParticipant = participantInput.value;
     var score = new scoring(correctQuestions, timerValue, eval(correctQuestions*timerValue))
     window[`quiz${quizNum}`].score = score;
+    window[`quiz${quizNum}`].participant = tParticipant;
     highScores.push(window[`quiz${quizNum}`])
     highScores.sort((a, b) => a.score.scoreValue - b.score.scoreValue);
 }
@@ -271,14 +284,6 @@ function displayHighScore() {
 function saveHighScore(){
     localStorage.setItem("highScores", JSON.stringify(highScores));
 }
-// function displayScore() {
-//     currentScore = window[`quiz${quizNum}`].score.scoreValue;
-//     highScores.push(currentScore);
-//     highScores.sort()
-//     for(var i = 0; i < highScores.length; i++){
-//         highScoreList[i].textContent = highScores[i];
-//     }
-// }
 
 highScoreLink.addEventListener("click", function(){
     quizContent.classList.add("hidden");
@@ -298,12 +303,3 @@ function reset(){
     highScores = JSON.parse(localStorage.getItem("highScores") || "[]")
 }
     
-    
-//  }
-//set up
-/*var names = [];
-names[0] = prompt("New member name?");
-localStorage.setItem("names", JSON.stringify(names));
-
-//...
-var storedNames = JSON.parse(localStorage.getItem("names"));*/
