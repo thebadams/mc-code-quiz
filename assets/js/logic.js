@@ -16,11 +16,22 @@ var labelOption2 = document.querySelector("label[for='option2']");
 var labelOption3 = document.querySelector("label[for='option3']");
 var labelOption4 = document.querySelector("label[for='option4']");
 var submitBtn = document.querySelector("#submit");
+var highScoreList = document.querySelectorAll("ol li");
 //declare variables
 var correctQuestions = 0;
 var quizNum = 1;
 var timerValue = 90;
 var isGameActive = false
+
+//High Score
+// var storedHighScores = JSON.parse(localStorage.getItem("highScores"))
+/*var names = [];
+names[0] = prompt("New member name?");
+localStorage.setItem("names", JSON.stringify(names));
+
+//...
+var storedNames = JSON.parse(localStorage.getItem("names")); */
+
 
 // define object classes
 class query {
@@ -207,33 +218,6 @@ function checkGameStatus() {
 //function to decide what happens when submit is clicked
 submitBtn.addEventListener("click", checkSubmission);
 
-// quizContent.addEventListener("click", function(event){
-//     var element = event.target
-//     if(element.matches("button")){
-//         console.log("Button Pressed!");
-//         var radioBtns = document.querySelectorAll("input[type=radio]");
-//         for(var i = 0; i < radioBtns.length; i++) {
-//             if(radioBtns[i].checked && radioBtns[i].value === "correct"){
-//                 if(window[`quiz${quizNum}`].queries[queryNum].options.length !== 0){
-//                     populateQuiz()
-//                 } else {
-//                     break
-//                 }//write else statement
-//             }
-            
-//             if(radioBtns[i].checked && radioBtns[i].value === "incorrect"){
-//                 timerValue = timerValue-10;
-//                 timer.textContent = timerValue;
-//                 if (window[`quiz${quizNum}`].queries[queryNum].options.length !== 0) {
-//                     populateQuiz()
-//                 } else {
-//                     break
-//                 } //write else statement
-
-//             };
-//         }
-//     }
-// })
 
 
 //timer functions
@@ -254,3 +238,34 @@ function countDown() {
 
 //TODO: Add start button functionality
 //TODO: Add High Score FunctionAlity
+function scoreLog(){
+    var score = new scoring(correctQuestions, timerValue, eval(correctQuestions*timerValue))
+    window[`quiz${quizNum}`].score = score;
+}
+
+var highScoreArray = []
+
+function displayScore() {
+    currentScore = window[`quiz${quizNum}`].score.scoreValue;
+    highScoreArray.push(currentScore);
+    for(var i = 0; i < highScoreArray.length; i++){
+        highScoreList[i].textContent = highScoreArray[i];
+    }
+}
+
+
+// function saveScore(){
+//     var highScoreArray = JSON.parse(localStorage.getItem("highScores"))
+//     highScoreArray.push(window[`quiz${quizNum}`].score.scoreValue)
+//     var highScoreString = JSON.stringify(highScoreArray);
+//     localStorage.setItem("highScores", highScoreString)
+    
+    
+//  }
+//set up
+/*var names = [];
+names[0] = prompt("New member name?");
+localStorage.setItem("names", JSON.stringify(names));
+
+//...
+var storedNames = JSON.parse(localStorage.getItem("names"));*/
