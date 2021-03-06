@@ -15,9 +15,12 @@ var labelOption1 = document.querySelector("label[for='option1']");
 var labelOption2 = document.querySelector("label[for='option2']");
 var labelOption3 = document.querySelector("label[for='option3']");
 var labelOption4 = document.querySelector("label[for='option4']");
+var submitBtn = document.querySelector("#submit");
 //declare variables
-var score = 0;
+var correctQuestions = 0;
 var quizNum = 1;
+var timerValue = 90;
+var isGameActive = false
 
 // define object classes
 class query {
@@ -172,8 +175,38 @@ function populateQuiz() {
    queryNum++
 };
 
+function checkSubmission(){
+    var radioBtns = document.querySelectorAll("input[type='radio']");
+    for(var i = 0; i < radioBtns.length; i++){
+        if(radioBtns[i].checked && radioBtns[i].value === "correct"){
+            correctQuestions++;
+            checkGameStatus()
+            if(isGameActive) {
+                populateQuiz()
+            }
+        }
+        if(radioBtns[i].checked && radioBtns[i].value === "incorrect"){
+            timerValue = timerValue -10;
+            timerDisplay.textContent = timerValue;
+            checkGameStatus()
+            if(isGameActive){
+                populateQuiz();
+            }
+        }
+    }
+}
+
+function checkGameStatus() {
+    if((window[`quiz${quizNum}`].queries[queryNum] === undefined)|| (timerValue === 0)) {
+        isGameActive = !isGameActive;
+        alert("Game Over");
+    }
+}
+
 
 //function to decide what happens when submit is clicked
+submitBtn.addEventListener("click", checkSubmission);
+
 // quizContent.addEventListener("click", function(event){
 //     var element = event.target
 //     if(element.matches("button")){
