@@ -61,8 +61,9 @@ class scoring {
 startBtn.addEventListener("click", function(){
     reset();
     isGameActive = true;
-    constructQuiz()
-    populateQuiz()
+    constructQuiz();
+    populateQuiz();
+    timer();
     //generate quiz
         //generate queries
         //generate options
@@ -205,7 +206,10 @@ function checkSubmission(){
 function checkGameStatus() {
     if((window[`quiz${quizNum}`].queries[queryNum] === undefined)|| (timerValue === 0)) {
         isGameActive = !isGameActive;
-        alert("Game Over");
+        clearInterval(countDownInterval);
+        scoreLog();
+        displayHighScore();
+        saveHighScore();
     }
 }
 
@@ -224,10 +228,10 @@ function timer(){
 function countDown() {
     if (timerValue > 0) {
         timerValue--
-        timer.textContent = timerValue;
+        timerDisplay.textContent = timerValue;
     } else {
         clearInterval(countDownInterval); //clears the interval and stops the timer
-        alert("Game Over");
+        
 
     }
 };
@@ -270,6 +274,7 @@ function reset(){
     queryNum = 0;
     correctQuestions = 0;
     timerValue = 90;
+    highScores = JSON.parse(localStorage.getItem("highScores") || "[]")
 }
     
     
