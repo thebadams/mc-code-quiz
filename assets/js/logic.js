@@ -5,6 +5,7 @@ var timerDisplay = document.querySelector("#timer-display"); //grab timer displa
 var quizContent = document.querySelector("#quiz-content"); //grab quiz content div
 var highScoresContent = document.querySelector("#high-scores");
 var participantInput = document.querySelector("#participant"); //grab participant input
+var timerContent = document.querySelector("#timer");
 //grab quiz elements
 var questionContent = document.querySelector("#question-content")
 var radioOption1 = document.querySelector("#option1");
@@ -61,6 +62,9 @@ class scoring {
 startBtn.addEventListener("click", function(){
     reset();
     isGameActive = true;
+    startPage.classList.toggle("hidden");
+    timerContent.classList.toggle("hidden");
+    quizContent.classList.toggle("hidden");
     constructQuiz();
     populateQuiz();
     timer();
@@ -207,6 +211,8 @@ function checkGameStatus() {
     if((window[`quiz${quizNum}`].queries[queryNum] === undefined)|| (timerValue === 0)) {
         isGameActive = !isGameActive;
         clearInterval(countDownInterval);
+        highScoresContent.classList.toggle("hidden");
+        quizContent.classList.toggle("hidden");
         scoreLog();
         displayHighScore();
         saveHighScore();

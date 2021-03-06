@@ -1,4 +1,18 @@
+/*make radio buttons hidden but still accessible*/
 input[type='radio'] {
     width: 0;
     opacity: 0;
+}
+
+/*make a hidden class to toggle in logic.js*/
+.hidden {
+    display: none!important;
+}
+
+.jumbotron {
+    height: 100vh;
+}
+
+p {
+    text-align: center;
 }
