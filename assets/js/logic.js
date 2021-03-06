@@ -88,8 +88,8 @@ var query2 = new query("test question 2", query2Options);
 // query3 options
 var query3Opt1 = new option("test answer 9", true);
 var query3Opt2 = new option("test answer 10", false);
-var query3Opt3 = new option("test answer 11", true);
-var query3Opt4 = new option("test answer 12", true);
+var query3Opt3 = new option("test answer 11", false);
+var query3Opt4 = new option("test answer 12", false);
 
 //query3 options array
 var query3Options = [query3Opt1, query3Opt2, query3Opt3, query3Opt4]
@@ -101,8 +101,8 @@ var query3 = new query("test question 3", query3Options);
 // query4 options
 var query4Opt1 = new option("test answer 13", true);
 var query4Opt2 = new option("test answer 14", false);
-var query4Opt3 = new option("test answer 15", true);
-var query4Opt4 = new option("test answer 16", true);
+var query4Opt3 = new option("test answer 15", false);
+var query4Opt4 = new option("test answer 16", false);
 
 //query4 options array
 var query4Options = [query4Opt1, query4Opt2, query4Opt3, query4Opt4]
@@ -114,8 +114,8 @@ var query4 = new query("test question 4", query4Options);
 // query5 options
 var query5Opt1 = new option("test answer 17", true);
 var query5Opt2 = new option("test answer 18", false);
-var query5Opt3 = new option("test answer 19", true);
-var query5Opt4 = new option("test answer 20", true);
+var query5Opt3 = new option("test answer 19", false);
+var query5Opt4 = new option("test answer 20", false);
 
 //query5 options array
 var query5Options = [query5Opt1, query5Opt2, query5Opt3, query5Opt4]
@@ -163,46 +163,51 @@ function populateQuiz() {
    questionContent.textContent = window[`quiz${quizNum}`].queries[queryNum].question
    for(var i = 0; i < window[`quiz${quizNum}`].queries[queryNum].options.length; i++) {
         eval(`labelOption${i+1}`).textContent = window[`quiz${quizNum}`].queries[queryNum].options[i].answer;
+        if(window[`quiz${quizNum}`].queries[queryNum].options[i].isCorrect === true){
+            eval(`radioOption${i+1}`).value = "correct";
+        } else {
+            eval(`radioOption${i+1}`).value = "incorrect";
+        };
    }
    queryNum++
 };
 
 
 //function to decide what happens when submit is clicked
-quizContent.addEventListener("click", function(event){
-    var element = event.target
-    if(element.matches("button")){
-        console.log("Button Pressed!");
-        var radioBtns = document.querySelectorAll("input[type=radio]");
-        for(var i = 0; i < radioBtns.length; i++) {
-            if(radioBtns[i].checked && radioBtns[i].value === "correct"){
-                if(window[`quiz${quizNum}`].queries[queryNum].options.length !== 0){
-                    populateQuiz()
-                } else {
-                    break
-                }//write else statement
-            }
+// quizContent.addEventListener("click", function(event){
+//     var element = event.target
+//     if(element.matches("button")){
+//         console.log("Button Pressed!");
+//         var radioBtns = document.querySelectorAll("input[type=radio]");
+//         for(var i = 0; i < radioBtns.length; i++) {
+//             if(radioBtns[i].checked && radioBtns[i].value === "correct"){
+//                 if(window[`quiz${quizNum}`].queries[queryNum].options.length !== 0){
+//                     populateQuiz()
+//                 } else {
+//                     break
+//                 }//write else statement
+//             }
             
-            if(radioBtns[i].checked && radioBtns[i].value === "incorrect"){
-                timerValue = timerValue-10;
-                timer.textContent = timerValue;
-                if (window[`quiz${quizNum}`].queries[queryNum].options.length !== 0) {
-                    populateQuiz()
-                } else {
-                    break
-                } //write else statement
+//             if(radioBtns[i].checked && radioBtns[i].value === "incorrect"){
+//                 timerValue = timerValue-10;
+//                 timer.textContent = timerValue;
+//                 if (window[`quiz${quizNum}`].queries[queryNum].options.length !== 0) {
+//                     populateQuiz()
+//                 } else {
+//                     break
+//                 } //write else statement
 
-            };
-        }
-    }
-})
+//             };
+//         }
+//     }
+// })
 
 
 //timer functions
 var countDownInterval
 function timer(){
     countDownInterval = setInterval(countDown, 1000)
-}ui
+}
 function countDown() {
     if (timerValue > 0) {
         timerValue--
