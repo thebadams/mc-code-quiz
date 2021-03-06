@@ -23,14 +23,7 @@ var quizNum = 0;
 var timerValue = 90;
 var isGameActive = false
 //High Score
-// var storedHighScores = JSON.parse(localStorage.getItem("highScores"))
-/*var names = [];
-names[0] = prompt("New member name?");
-localStorage.setItem("names", JSON.stringify(names));
-
-//...
-var storedNames = JSON.parse(localStorage.getItem("names")); */
-
+var highScores = JSON.parse(localStorage.getItem("highScores")||"[]")
 
 // define object classes
 class query {
@@ -246,13 +239,29 @@ function scoreLog(){
     window[`quiz${quizNum}`].score = score;
 }
 
-function displayScore() {
-    currentScore = window[`quiz${quizNum}`].score.scoreValue;
-    highScoreArray.push(currentScore);
-    for(var i = 0; i < highScoreArray.length; i++){
-        highScoreList[i].textContent = highScoreArray[i];
+//take current quiz, and add it to high scores list
+function displayHighScore() {
+    highScores.push(window[`quiz${quizNum}`])
+    highScores.sort((a,b)=>a.score.scoreValue-b.score.scoreValue);
+    if(highScores.length > 10){
+        highScores.splice(highScores[10]);
+    }
+    for(var i = 0; i < highScores.length; i++) {
+        highScoreList[i].textContent = `${highScores[i].participant} :: ${highScores[i].score.scoreValue}`
     }
 }
+
+function saveHighScore(){
+    localStorage.setItem("highScores", JSON.stringify(highScores));
+}
+// function displayScore() {
+//     currentScore = window[`quiz${quizNum}`].score.scoreValue;
+//     highScores.push(currentScore);
+//     highScores.sort()
+//     for(var i = 0; i < highScores.length; i++){
+//         highScoreList[i].textContent = highScores[i];
+//     }
+// }
 
 
 function reset(){
@@ -262,12 +271,6 @@ function reset(){
     correctQuestions = 0;
     timerValue = 90;
 }
-
-// function saveScore(){
-//     var highScoreArray = JSON.parse(localStorage.getItem("highScores"))
-//     highScoreArray.push(window[`quiz${quizNum}`].score.scoreValue)
-//     var highScoreString = JSON.stringify(highScoreArray);
-//     localStorage.setItem("highScores", highScoreString)
     
     
 //  }
