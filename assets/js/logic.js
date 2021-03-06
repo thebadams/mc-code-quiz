@@ -19,7 +19,7 @@ var submitBtn = document.querySelector("#submit");
 var highScoreList = document.querySelectorAll("ol li");
 //declare variables
 var correctQuestions = 0;
-var quizNum = 1;
+var quizNum = 0;
 var timerValue = 90;
 var isGameActive = false
 //High Score
@@ -66,10 +66,13 @@ class scoring {
 
 //TODO: build a function to occur onClick of startBtn
 startBtn.addEventListener("click", function(){
+    reset();
+    isGameActive = true;
+    constructQuiz()
+    populateQuiz()
     //generate quiz
         //generate queries
         //generate options
-    //TODO: populate quiz
     //hide start-page
     //start timer
 })
@@ -217,6 +220,7 @@ function checkGameStatus() {
 //function to decide what happens when submit is clicked
 submitBtn.addEventListener("click", checkSubmission);
 
+//function to decide what happens when start is clicked
 
 
 //timer functions
