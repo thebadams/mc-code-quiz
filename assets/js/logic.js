@@ -6,8 +6,9 @@ var quizContent = document.querySelector("#quiz-content"); //grab quiz content d
 var highScoresContent = document.querySelector("#high-scores");
 var participantInput = document.querySelector("#participant"); //grab participant input
 var timerContent = document.querySelector("#timer");
+var highScoreLink = document.querySelector("#high-score-link");
 //grab quiz elements
-var questionContent = document.querySelector("#question-content")
+var questionContent = document.querySelector("#question-content");
 var radioOption1 = document.querySelector("#option1");
 var radioOption2 = document.querySelector("#option2");
 var radioOption3 = document.querySelector("#option3");
@@ -237,6 +238,11 @@ function countDown() {
         timerDisplay.textContent = timerValue;
     } else {
         clearInterval(countDownInterval); //clears the interval and stops the timer
+        quizContent.classList.toggle("hidden");
+        highScoresContent.classList.toggle("hidden");
+        timerContent.classList.toggle("hidden");
+        displayHighScore();
+
         
 
     }
@@ -247,12 +253,13 @@ function countDown() {
 function scoreLog(){
     var score = new scoring(correctQuestions, timerValue, eval(correctQuestions*timerValue))
     window[`quiz${quizNum}`].score = score;
+    highScores.push(window[`quiz${quizNum}`])
+    highScores.sort((a, b) => a.score.scoreValue - b.score.scoreValue);
 }
 
 //take current quiz, and add it to high scores list
 function displayHighScore() {
-    highScores.push(window[`quiz${quizNum}`])
-    highScores.sort((a,b)=>a.score.scoreValue-b.score.scoreValue);
+   
     if(highScores.length > 10){
         highScores.splice(highScores[10]);
     }
@@ -272,6 +279,14 @@ function saveHighScore(){
 //         highScoreList[i].textContent = highScores[i];
 //     }
 // }
+
+highScoreLink.addEventListener("click", function(){
+    quizContent.classList.add("hidden");
+    startPage.classList.add("hidden");
+    clearInterval(countDownInterval);
+    displayHighScore();
+    highScoresContent.classList.remove("hidden");
+})
 
 
 function reset(){
