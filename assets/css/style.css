@@ -23,6 +23,7 @@ input[type='radio']:checked + label {
 .jumbotron {
     height: 100vh;
     background-color: #283747;
+    border-radius: 10px;
 }
 
 p {
@@ -49,3 +50,14 @@ button:hover {
     background-color: #DE3543;
     color: #283747;
 }
+
+nav p.btn{
+    transition: all;
+    transition-duration: 0.5s;
+    color: #f3f3f3;
+}
+nav p.btn:hover {
+    background-color:#283747;
+    color: #f3f3f3;
+}
+

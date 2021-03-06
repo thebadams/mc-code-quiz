@@ -23,6 +23,7 @@ var correctDisplay = document.querySelector("#correct-display");
 var scoringDisplay =document.querySelector("#scoring-display");
 var scoreLogBtn = document.querySelector("#score-log-btn");
 var totalScore = document.querySelector("#total-score");
+var playAgainBtn = document.querySelector("#play-again");
 //declare variables
 var correctQuestions = 0;
 var quizNum = 0;
@@ -302,4 +303,12 @@ function reset(){
     timerValue = 90;
     highScores = JSON.parse(localStorage.getItem("highScores") || "[]")
 }
+
+playAgainBtn.addEventListener("click", function(){
+    highScoresContent.classList.add("hidden");
+    quizContent.classList.add("hidden");
+    timerContent.classList.add("hidden");
+    startPage.classList.remove("hidden");
+    clearInterval(countDownInterval);
+})
     
