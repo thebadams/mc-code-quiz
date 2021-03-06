@@ -14,56 +14,66 @@
         <p>Play Again</p>
     </nav>
     <div class="cover-container d-flex flex-column justify-content-center align-items-center">
-        <div id="start-page" class="jumbotron jumbotron-fluid d-flex flex-column justify-content-center">
+        <div id="start-page" class="jumbotron jumbotron-fluid d-flex flex-column justify-content-center p-3 m-5">
             <h1 class="display-3 my-3">JavaScript Knowledge Quiz</h1>
             <p>Please Click Start to Start The Quiz</p>
 
-            <button id="start-btn" class="my-3">Start</button>
+            <button id="start-btn" class="btn smy-3">Start</button>
         </div>
+        <div class="card p-3">
         <div id="timer" class ="hidden">
-        <h2>Score Board</h2>
-            <h3>Time Left</h3>
-            <p><span id ="timer-display">90</span> Seconds</p>
-            <div id="scoring-display" class = "hidden">
-                <h3>Number Correct</h3>
-                <p id = "correct-display"></p>
-                <h3>Total Score</h3>
-                <p id="total-score"></p>
-                <input type="text" name="participant" id="participant" class="my-3">
-                <button id= "score-log-btn">Log Score</button>
+            <div class="card p-3 m-5">
+                <h2>Score Board</h2>
+                <h3>Time Left</h3>
+                <p class = display-5><span id ="timer-display display-4">90</span> Seconds</p>
+                <div id="scoring-display" class = "hidden">
+                    
+                    <h3>Number Correct</h3>
+                    <p id = "correct-display">
+                    <h3>Total Score</h3>
+                    <p id="total-score"></p>
+                    <input type="text" name="participant" id="participant" class="my-3">
+                    <button id= "score-log-btn" class ="btn">Log Score</button>
+                </div>
             </div>
 
         </div>
-        <div id="quiz-content" class="hidden">
-            <div class="card">
+        <div id="quiz-content" class="hidden m-5">
+            <div class="card p-3">
                 <h3 id="question-content">Question</h3>
-                <label for="option1">Option 1</label>
+                
                 <input type="radio" name="option" id="option1">
-                <label for="option2">Option 2</label>
+                <label for="option1">Option 1</label>
+                
                 
                 <input type="radio" name="option" id="option2">
-                <label for="option3">Option 3</label>
+                <label for="option2">Option 2</label>
+                
                 <input type="radio" name="option" id="option3">
-                <label for="option4">Option 4</label>
+                <label for="option3">Option 3</label>
+                
                 <input type="radio" name="option" id="option4">
-                <button id="submit">submit</button>
+                <label for="option4">Option 4</label>
+                <button id="submit" class = "btn">submit</button>
             </div>
         </div>
 
-        <div id="high-scores" class="hidden">
-            <h2>High Scores</h2>
-            <ol>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ol>
+        <div id="high-scores" class="hidden m-5">
+            <div class="card p-3">
+                <h2>High Scores</h2>
+                <ol>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ol>
+            </div>
 
         </div>
     </div>
