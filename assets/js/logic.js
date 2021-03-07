@@ -74,6 +74,7 @@ startBtn.addEventListener("click", function(){
     constructQuiz();
     populateQuiz();
     timer();
+    scoringDisplay.classList.add("hidden");
     // generate quiz
     //     generate queries
     //     generate options
@@ -334,6 +335,7 @@ function scoreLog(){
     window[`quiz${quizNum}`].participant = tParticipant;
     highScores.push(window[`quiz${quizNum}`])
     highScores.sort((a, b) => b.score.scoreValue - a.score.scoreValue);
+    saveHighScore();
 }
 
 //take current quiz, and add it to high scores list
@@ -354,6 +356,7 @@ function saveHighScore(){
 highScoreLink.addEventListener("click", function(){
     quizContent.classList.add("hidden");
     startPage.classList.add("hidden");
+    timerContent.classList.add("hidden");
     clearInterval(countDownInterval);
     displayHighScore();
     highScoresContent.classList.remove("hidden");

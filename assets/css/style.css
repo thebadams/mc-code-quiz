@@ -2,6 +2,7 @@ body {
     background-color: #932432;
     color: #f3f3f3;
     text-align: center;
+    font-family: 'Roboto Mono', monospace;
 }
 /*make radio buttons hidden but still accessible*/
 input[type='radio'] {
