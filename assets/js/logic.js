@@ -83,67 +83,131 @@ startBtn.addEventListener("click", function(){
 //build queries and options
 
 //build options, query 1
-var query1Opt1 = new option("test answer", true);
-var query1Opt2 = new option("test answer 2", false);
-var query1Opt3 = new option("test answer 3", false);
-var query1Opt4 = new option("test answer 4", false);
+var query1Opt1 = new option("function (){ //code here}", false);
+var query1Opt2 = new option("function name(){ //code here}", false);
+var query1Opt3 = new option("()=> //code here", false);
+var query1Opt4 = new option("func name(){ //code here}", true);
 
 //build query 1 options array
 q1Options = [query1Opt1, query1Opt2, query1Opt3, query1Opt4];
 
-var query1 = new query("test question 1", q1Options);
+var query1 = new query("Which of the following is not a valid way to write a function?", q1Options);
 
 //build options, query 2
-var query2Opt1 = new option("test answer 5", true);
-var query2Opt2 = new option("test answer 6", false);
-var query2Opt3 = new option("test answer 7", false);
-var query2Opt4 = new option("test answer 8", false);
+var query2Opt1 = new option("Boolean", false);
+var query2Opt2 = new option("String", false);
+var query2Opt3 = new option("Array", true);
+var query2Opt4 = new option("Number", false);
 
 //build query 2 oueryptions array
 var query2Options = [query2Opt1, query2Opt2, query2Opt3, query2Opt4];
 
-var query2 = new query("test question 2", query2Options);
+var query2 = new query("Which of these is not a primitive data type?", query2Options);
 
 //build query 3
 // query3 options
-var query3Opt1 = new option("test answer 9", true);
-var query3Opt2 = new option("test answer 10", false);
-var query3Opt3 = new option("test answer 11", false);
-var query3Opt4 = new option("test answer 12", false);
+var query3Opt1 = new option("Curly Braces", true);
+var query3Opt2 = new option("Double Quotes", false);
+var query3Opt3 = new option("Square Brackets", false);
+var query3Opt4 = new option("Double Quotes", false);
 
 //query3 options array
 var query3Options = [query3Opt1, query3Opt2, query3Opt3, query3Opt4]
 
 //build query 3
-var query3 = new query("test question 3", query3Options);
+var query3 = new query("An object is contained in which set of symbols?", query3Options);
 
 //build query 4
 // query4 options
-var query4Opt1 = new option("test answer 13", true);
-var query4Opt2 = new option("test answer 14", false);
-var query4Opt3 = new option("test answer 15", false);
-var query4Opt4 = new option("test answer 16", false);
+var query4Opt1 = new option("var", false);
+var query4Opt2 = new option("for", true);
+var query4Opt3 = new option("const", false);
+var query4Opt4 = new option("let", false);
 
 //query4 options array
 var query4Options = [query4Opt1, query4Opt2, query4Opt3, query4Opt4]
 
 //build query 4
-var query4 = new query("test question 4", query4Options);
+var query4 = new query("Which of the following is not a keyword used in delcaring variables?", query4Options);
 
 //build query 5
 // query5 options
-var query5Opt1 = new option("test answer 17", true);
-var query5Opt2 = new option("test answer 18", false);
-var query5Opt3 = new option("test answer 19", false);
-var query5Opt4 = new option("test answer 20", false);
+var query5Opt1 = new option("Period", false);
+var query5Opt2 = new option("Hyphen", false);
+var query5Opt3 = new option("Semicolon", true);
+var query5Opt4 = new option("Comma", false);
 
 //query5 options array
 var query5Options = [query5Opt1, query5Opt2, query5Opt3, query5Opt4]
 
 //build query 3
-var query5 = new query("test question 5", query5Options);
+var query5 = new query("A for loop's arguments are separated by what symbol?", query5Options);
+
+
+
+//build query 6
+var query6Opt1 = new option("array[i]", true);
+var query6Opt2 = new option("[i]array", false);
+var query6Opt3 = new option("array{i}", false);
+var query6Opt4 = new option("array(i)", false);
+
+//query6 options array
+var query6Options = [query6Opt1, query6Opt2, query6Opt3, query5Opt4]
+
+//build query 6
+var query6 = new query("Which notation is the correct way to get an element at a specific index number from an array?", query6Options);
+
+var query7Opt1 = new option("<js>", false);
+var query7Opt2 = new option("<javascript>", false);
+var query7Opt3 = new option("<link>", false);
+var query7Opt4 = new option("<script>", true);
+
+//query7 options array
+var query7Options = [query7Opt1, query7Opt2, query7Opt3, query7Opt4]
+
+//build query 7
+var query7 = new query("To include a JavaScript file in an HTML file, you would use which HTML tag?", query7Options);
+
+
+var query8Opt1 = new option("Sets a variable called 'console.log' to be equal to 'I am the greatest programmer in the world'", false);
+var query8Opt2 = new option("Prints the string 'I am the greatest programmer in the world' to the console", true);
+var query8Opt3 = new option("Changes the content of the webpage to read 'I am the greatest programmer in the world'", false);
+var query8Opt4 = new option("Attaches a string, 'I am the greatest programmer in the world' to the console object.", false);
+
+//query8 options array
+var query8Options = [query8Opt1, query8Opt2, query8Opt3, query8Opt4]
+
+//build query 8
+var query8 = new query("The Line of code, console.log('I am the greatest programmer in the world') does which of the following?", query8Options);
+
+
+//build query 9
+var query9Opt1 = new option("a calls for the element that you’re adding the event to, b calls for the type of event", false);
+var query9Opt2 = new option("a calls for the element that you’re adding the event to, b calls for the function to be run", false);
+var query9Opt3 = new option("a calls for the type of event, b calls for the function to be run", true);
+var query9Opt4 = new option("a calls for the function to be run, b calls for the type of event", false);
+
+//query9 options array
+var query9Options = [query9Opt1, query9Opt2, query9Opt3, query9Opt4]
+
+//build query 9
+var query9 = new query("The method, .addEventListener(a, b), calls for what two arguments (a and b); what are they?", query9Options);
+
+//build query 10
+var query10Opt1 = new option("1995", true);
+var query10Opt2 = new option("2000", false);
+var query10Opt3 = new option("2001", false);
+var query10Opt4 = new option("1996", false);
+
+//query9 options array
+var query10Options = [query10Opt1, query10Opt2, query10Opt3, query10Opt4]
+
+//build query 9
+var query10 = new query("What Year was JavaScript Created?", query10Options);
+
+
 //function to generate random question
-let queryArray = [query1, query2, query3, query4, query5]//define query Array
+let queryArray = [query1, query2, query3, query4, query5, query6, query7, query8, query9, query10]//define query Array
 
 //function to generate a random query & remove it from the array
 function generateQuery(){
