@@ -263,14 +263,15 @@ function checkSubmission(){
             checkGameStatus()
             if(isGameActive) {
                 populateQuiz()
+                return
             }
-        }
-        if(radioBtns[i].checked && (radioBtns[i].value === "incorrect")){
+        } else if(radioBtns[i].checked && (radioBtns[i].value === "incorrect")){
             timerValue = timerValue -10;
             timerDisplay.textContent = timerValue;
             checkGameStatus()
             if(isGameActive){
                 populateQuiz();
+                return
             }
         }
     }
