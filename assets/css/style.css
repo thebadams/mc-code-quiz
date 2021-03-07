@@ -1,0 +1,64 @@
+body {
+    background-color: #932432;
+    color: #f3f3f3;
+    text-align: center;
+    font-family: 'Roboto Mono', monospace;
+}
+/*make radio buttons hidden but still accessible*/
+input[type='radio'] {
+    width: 0;
+    opacity: 0;
+    pointer-events: none;
+}
+
+input[type='radio']:checked + label {
+    background-color: #932432;
+    color: #283747;
+}
+
+/*make a hidden class to toggle in logic.js*/
+.hidden {
+    display: none!important;
+}
+
+.jumbotron {
+    height: 100vh;
+    background-color: #283747;
+    border-radius: 10px;
+}
+
+p {
+    text-align: center;
+}
+
+.card {
+    background-color: #283747;
+    border-color: #f3f3f3;
+}
+
+button.btn {
+  background-color: #932432; 
+  color: #f3f3f3; 
+}
+
+label {
+    transition: all;
+    transition-duration: 0.5s;
+}
+
+label:hover,
+button:hover {
+    background-color: #DE3543;
+    color: #283747;
+}
+
+nav p.btn{
+    transition: all;
+    transition-duration: 0.5s;
+    color: #f3f3f3;
+}
+nav p.btn:hover {
+    background-color:#283747;
+    color: #f3f3f3;
+}
+

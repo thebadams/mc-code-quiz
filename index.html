@@ -4,23 +4,83 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
     <title>Coding Multiple Choice Quiz</title>
 </head>
 <body>
-    <div id="start-page">
-        <button>Start</button>
-    </div>
-    <div id="timer">
-    <h2>Timer</h2>
-        <h3>Time Left</h3>
-        <p><span id ="timerDisplay">90</span> Seconds</p>
-    </div>
-    <div id="quiz-content">
-        
-    </div>
-    <div id="high-scores">
+    <nav class="nav navbar justify-content-around">
+        <p id="high-score-link" class="btn">High Scores</p>
+        <p id = "play-again" class="btn">Play Again</p>
+    </nav>
+    <div class="cover-container d-flex flex-column justify-content-center align-items-center">
+        <div id="start-page" class="jumbotron jumbotron-fluid d-flex flex-column justify-content-center p-3 m-5">
+            <h1 class="display-3 my-3">JavaScript Knowledge Quiz</h1>
+            <p>Please Click Start to Start The Quiz</p>
 
+            <button id="start-btn" class="btn smy-3">Start</button>
+        </div>
+        
+        <div id="timer" class ="hidden">
+            
+            <div class="card p-3 m-5">
+                <h2>Score Board</h2>
+                <h3>Time Left</h3>
+                <p class = display-5><span id ="timer-display">90</span> Seconds</p>
+                <div id="scoring-display" class = "hidden">
+                    
+                    <h3>Number Correct</h3>
+                    <p id = "correct-display">
+                    <h3>Total Score</h3>
+                    <p id="total-score"></p>
+                    <input type="text" name="participant" id="participant" class="my-3">
+                    <button id= "score-log-btn" class ="btn">Log Score</button>
+                </div>
+            </div>
+
+        </div>
+        <div id="quiz-content" class="hidden m-5">
+            <div class="card p-3">
+                <h3 id="question-content">Question</h3>
+                
+                <input type="radio" name="option" id="option1">
+                <label for="option1">Option 1</label>
+                
+                
+                <input type="radio" name="option" id="option2">
+                <label for="option2">Option 2</label>
+                
+                <input type="radio" name="option" id="option3">
+                <label for="option3">Option 3</label>
+                
+                <input type="radio" name="option" id="option4">
+                <label for="option4">Option 4</label>
+                <button id="submit" class = "btn">submit</button>
+            </div>
+        </div>
+
+        <div id="high-scores" class="hidden m-5">
+            <div class="card p-3">
+                <h2>High Scores</h2>
+                <ol>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ol>
+            </div>
+
+        </div>
     </div>
     <script src = "assets/js/logic.js"></script>
 </body>
