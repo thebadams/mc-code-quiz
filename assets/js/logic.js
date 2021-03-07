@@ -332,7 +332,7 @@ function scoreLog(){
     window[`quiz${quizNum}`].score = score;
     window[`quiz${quizNum}`].participant = tParticipant;
     highScores.push(window[`quiz${quizNum}`])
-    highScores.sort((a, b) => a.score.scoreValue - b.score.scoreValue);
+    highScores.sort((a, b) => b.score.scoreValue - a.score.scoreValue);
 }
 
 //take current quiz, and add it to high scores list
