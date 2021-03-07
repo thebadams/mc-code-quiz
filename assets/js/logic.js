@@ -240,139 +240,139 @@ function constructQuiz(){
 
 
 
-var queryNum = 0
-// Function to populate quiz
-function populateQuiz() {
-   questionContent.textContent = window[`quiz${quizNum}`].queries[queryNum].question
-   for(var i = 0; i < window[`quiz${quizNum}`].queries[queryNum].options.length; i++) {
-        eval(`labelOption${i+1}`).textContent = window[`quiz${quizNum}`].queries[queryNum].options[i].answer;
-        if(window[`quiz${quizNum}`].queries[queryNum].options[i].isCorrect === true){
-            eval(`radioOption${i+1}`).value = "correct";
-        } else {
-            eval(`radioOption${i+1}`).value = "incorrect";
-        };
-   }
-   queryNum++
-};
+// var queryNum = 0
+// // Function to populate quiz
+// function populateQuiz() {
+//    questionContent.textContent = window[`quiz${quizNum}`].queries[queryNum].question
+//    for(var i = 0; i < window[`quiz${quizNum}`].queries[queryNum].options.length; i++) {
+//         eval(`labelOption${i+1}`).textContent = window[`quiz${quizNum}`].queries[queryNum].options[i].answer;
+//         if(window[`quiz${quizNum}`].queries[queryNum].options[i].isCorrect === true){
+//             eval(`radioOption${i+1}`).value = "correct";
+//         } else {
+//             eval(`radioOption${i+1}`).value = "incorrect";
+//         };
+//    }
+//    queryNum++
+// };
 
-function checkSubmission(){
-    var radioBtns = document.querySelectorAll("input[type='radio']");
-    for(var i = 0; i < radioBtns.length; i++){
-        if(radioBtns[i].checked && radioBtns[i].value === "correct"){
-            correctQuestions++;
-            checkGameStatus()
-            if(isGameActive) {
-                populateQuiz()
-            }
-        }
-        if(radioBtns[i].checked && radioBtns[i].value === "incorrect"){
-            timerValue = timerValue -10;
-            timerDisplay.textContent = timerValue;
-            checkGameStatus()
-            if(isGameActive){
-                populateQuiz();
-            }
-        }
-    }
-}
+// function checkSubmission(){
+//     var radioBtns = document.querySelectorAll("input[type='radio']");
+//     for(var i = 0; i < radioBtns.length; i++){
+//         if(radioBtns[i].checked && radioBtns[i].value === "correct"){
+//             correctQuestions++;
+//             checkGameStatus()
+//             if(isGameActive) {
+//                 populateQuiz()
+//             }
+//         }
+//         if(radioBtns[i].checked && radioBtns[i].value === "incorrect"){
+//             timerValue = timerValue -10;
+//             timerDisplay.textContent = timerValue;
+//             checkGameStatus()
+//             if(isGameActive){
+//                 populateQuiz();
+//             }
+//         }
+//     }
+// }
 
-function checkGameStatus() {
-    if((window[`quiz${quizNum}`].queries[queryNum] === undefined)|| (timerValue === 0)) {
-        isGameActive = !isGameActive;
-        clearInterval(countDownInterval);
-        totalScore.textContent = (timerValue*correctQuestions)
-        correctQuestions.textContent = correctQuestions
-        quizContent.classList.toggle("hidden");
-        scoringDisplay.classList.toggle("hidden")
-
-        
-    }
-}
-
-scoreLogBtn.addEventListener("click", function(){
-    scoreLog()
-    timerContent.classList.toggle("hidden");
-    highScoresContent.classList.toggle("hidden");
-    displayHighScore();
-});
-
-
-//function to decide what happens when submit is clicked
-submitBtn.addEventListener("click", checkSubmission);
-
-//function to decide what happens when start is clicked
-
-
-//timer functions
-var countDownInterval
-function timer(){
-    countDownInterval = setInterval(countDown, 1000)
-}
-function countDown() {
-    if (timerValue > 0) {
-        timerValue--
-        timerDisplay.textContent = timerValue;
-    } else {
-        clearInterval(countDownInterval); //clears the interval and stops the timer
-        quizContent.classList.toggle("hidden");
-        scoringDisplay.classList.toggle("hidden");
-        correctDisplay.textContent = correctQuestions;
-        totalScore.textContent = (correctQuestions*timerValue);
+// function checkGameStatus() {
+//     if((window[`quiz${quizNum}`].queries[queryNum] === undefined)|| (timerValue === 0)) {
+//         isGameActive = !isGameActive;
+//         clearInterval(countDownInterval);
+//         totalScore.textContent = (timerValue*correctQuestions)
+//         correctQuestions.textContent = correctQuestions
+//         quizContent.classList.toggle("hidden");
+//         scoringDisplay.classList.toggle("hidden")
 
         
+//     }
+// }
 
-    }
-};
+// scoreLogBtn.addEventListener("click", function(){
+//     scoreLog()
+//     timerContent.classList.toggle("hidden");
+//     highScoresContent.classList.toggle("hidden");
+//     displayHighScore();
+// });
 
-//TODO: Add start button functionality
-//TODO: Add High Score FunctionAlity
-function scoreLog(){
-    var tParticipant = participantInput.value;
-    var score = new scoring(correctQuestions, timerValue, eval(correctQuestions*timerValue))
-    window[`quiz${quizNum}`].score = score;
-    window[`quiz${quizNum}`].participant = tParticipant;
-    highScores.push(window[`quiz${quizNum}`])
-    highScores.sort((a, b) => b.score.scoreValue - a.score.scoreValue);
-}
 
-//take current quiz, and add it to high scores list
-function displayHighScore() {
+// //function to decide what happens when submit is clicked
+// submitBtn.addEventListener("click", checkSubmission);
+
+// //function to decide what happens when start is clicked
+
+
+// //timer functions
+// var countDownInterval
+// function timer(){
+//     countDownInterval = setInterval(countDown, 1000)
+// }
+// function countDown() {
+//     if (timerValue > 0) {
+//         timerValue--
+//         timerDisplay.textContent = timerValue;
+//     } else {
+//         clearInterval(countDownInterval); //clears the interval and stops the timer
+//         quizContent.classList.toggle("hidden");
+//         scoringDisplay.classList.toggle("hidden");
+//         correctDisplay.textContent = correctQuestions;
+//         totalScore.textContent = (correctQuestions*timerValue);
+
+        
+
+//     }
+// };
+
+// //TODO: Add start button functionality
+// //TODO: Add High Score FunctionAlity
+// function scoreLog(){
+//     var tParticipant = participantInput.value;
+//     var score = new scoring(correctQuestions, timerValue, eval(correctQuestions*timerValue))
+//     window[`quiz${quizNum}`].score = score;
+//     window[`quiz${quizNum}`].participant = tParticipant;
+//     highScores.push(window[`quiz${quizNum}`])
+//     highScores.sort((a, b) => b.score.scoreValue - a.score.scoreValue);
+// }
+
+// //take current quiz, and add it to high scores list
+// function displayHighScore() {
    
-    if(highScores.length > 10){
-        highScores.splice(highScores[10]);
-    }
-    for(var i = 0; i < highScores.length; i++) {
-        highScoreList[i].textContent = `${highScores[i].participant} :: ${highScores[i].score.scoreValue}`
-    }
-}
+//     if(highScores.length > 10){
+//         highScores.splice(highScores[10]);
+//     }
+//     for(var i = 0; i < highScores.length; i++) {
+//         highScoreList[i].textContent = `${highScores[i].participant} :: ${highScores[i].score.scoreValue}`
+//     }
+// }
 
-function saveHighScore(){
-    localStorage.setItem("highScores", JSON.stringify(highScores));
-}
+// function saveHighScore(){
+//     localStorage.setItem("highScores", JSON.stringify(highScores));
+// }
 
-highScoreLink.addEventListener("click", function(){
-    quizContent.classList.add("hidden");
-    startPage.classList.add("hidden");
-    clearInterval(countDownInterval);
-    displayHighScore();
-    highScoresContent.classList.remove("hidden");
-})
+// highScoreLink.addEventListener("click", function(){
+//     quizContent.classList.add("hidden");
+//     startPage.classList.add("hidden");
+//     clearInterval(countDownInterval);
+//     displayHighScore();
+//     highScoresContent.classList.remove("hidden");
+// })
 
 
-function reset(){
-    quizNum++;
-    queryArray = [query1, query2, query3, query4, query5];
-    queryNum = 0;
-    correctQuestions = 0;
-    timerValue = 90;
-    highScores = JSON.parse(localStorage.getItem("highScores") || "[]")
-}
+// function reset(){
+//     quizNum++;
+//     queryArray = [query1, query2, query3, query4, query5];
+//     queryNum = 0;
+//     correctQuestions = 0;
+//     timerValue = 90;
+//     highScores = JSON.parse(localStorage.getItem("highScores") || "[]")
+// }
 
-playAgainBtn.addEventListener("click", function(){
-    highScoresContent.classList.add("hidden");
-    quizContent.classList.add("hidden");
-    timerContent.classList.add("hidden");
-    startPage.classList.remove("hidden");
-    clearInterval(countDownInterval);
-})
+// playAgainBtn.addEventListener("click", function(){
+//     highScoresContent.classList.add("hidden");
+//     quizContent.classList.add("hidden");
+//     timerContent.classList.add("hidden");
+//     startPage.classList.remove("hidden");
+//     clearInterval(countDownInterval);
+// })
     
